@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+
+			<p:dataTable var="agent" value="#{agentBean.agents}"
+				emptyMessage="Liste  vide.">
+              
+				<p:column headerText="Matricule" sortBy="#{agent.matricule}"
+					filterBy="#{agent.matricule}" filterMatchMode="contains" width="100">
+					<h:outputText value="#{agent.matricule}" />
+				</p:column>
+				 <p:column headerText="Titre" width="50">
+					<h:outputText value="#{agent.titre}" />
+				</p:column>
+				<p:column headerText="Prenom" sortBy="#{agent.prenom}"
+				filterBy="#{agent.prenom}" filterMatchMode="contains" width="120">
+					<h:outputText value="#{agent.prenom}" />
+				</p:column>
+				<p:column headerText="Nom" width="80">
+					<h:outputText value="#{agent.nom}" />
+				</p:column>
+				<p:column headerText="Adresse" width="100">
+					<h:outputText value="#{agent.adresseofficiel}" />
+				</p:column>
+				<p:column headerText="Telephone" sortBy= "#{agent.telofficiel}"
+				filterBy="#{agent.telofficiel}" filterMatchMode="contains" width="100">
+					<h:outputText value="#{agent.telofficiel}" />
+				</p:column>
+				<p:column headerText="Mail" width="200">
+					<h:outputText value="#{agent.mailofficiel}" />
+				</p:column>
+				<p:column headerText="Date Recrutement" width="110">
+					<h:outputText value="#{agent.dateRecrutement}" />
+				</p:column>
+				<p:column headerText="Situation" width="100">
+					<h:outputText value="#{agent.situationmatrimonial}" />
+				</p:column>
+				<p:column headerText="Enfant" width="50">
+					<h:outputText value="#{agent.nombreenfant}" />
+				</p:column>		
+				<p:column headerText="Service" width="100">
+					<h:outputText value="#{agent.service.libelleservice}" />
+				</p:column>			
+				<p:column headerText="Corps" width="100">
+					<h:outputText value="#{agent.corps.libelleCorps}" />
+				</p:column>				
+				<p:column headerText="Date Naissance" width="100">
+					<h:outputText value="#{agent.dateNaissance}" />
+				</p:column>
+				<p:column headerText="Date Retraite" width="100">
+					<h:outputText value="#{agent.dateRetraite}" />
+				</p:column>
+				
+				<p:column width="50">
+					<f:facet name="header">
+						<h:outputText value="modif" />
+					</f:facet>
+					<h:commandLink action="#{agentDetailBean.editer()}"
+						actionListener="#{agentDetailBean.getAttributes()}"
+						styleClass="ui-icon ui-icon-pencil">
+						<f:setPropertyActionListener target="#{agentDetailBean.agentUp}"
+							value="#{agent}" />
+						<f:attribute name="matricule" value="#{agent.matricule}" />
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,245 @@
+package bean;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.FacesValidator;
+import javax.faces.validator.Validator;
+import javax.faces.validator.ValidatorException;
+import javax.servlet.http.HttpSession;
+
+import utilitaires.UtilitaireSession;
+import dtai.gp.model.User;
+import dtai.gp.service.UserService;
+
+@FacesValidator(value = "userBean")
+@ManagedBean
+@SessionScoped
+public class UserBean implements Serializable, Validator  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private UserService userService;
+
+	private User user = new User();
+
+	private User us = new User();
+
+	private List<User> users = new ArrayList<User>();
+
+	public String save() {
+		user.setPassword(generedpw());
+		user.setTypeActe(0);
+		userService.SaveUser(user);
+		FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "User  ajouté",
+						null));
+		return "/faces/user.xhtml";
+
+	}
+
+	public String delete() {
+		userService.deleteUser(user);
+		return "/faces/user.xhtml";
+	}
+
+	public String update() {
+		userService.updateUser(user);
+		return "/faces/user.xhtml";
+	}
+	public String updatePw() {
+		userService.updateUser(user);
+		return "/faces/template1.xhtml";
+	}
+
+	@PostConstruct
+	public void init() {
+		users = userService.FindAll();
+	}
+
+	public String login() {
+		// int test=0;
+		String val = "";
+		Boolean res = false;
+		Boolean res2 = false;
+		res = userService.findByLogin(user.getLogin(), user.getPassword());
+		res2 = userService.findByIndice(user.getTypeActe(), user.getLogin());
+		if (res == true) {
+			if (res2 == true) {
+				val = "succesLogin";
+				HttpSession session = UtilitaireSession.getSession();
+				session.setAttribute("userLogin", user.getLogin());
+				session.setAttribute("userPasse", user.getPassword());
+				session.setAttribute("userTypeActe",
+						String.valueOf(user.getTypeActe()));
+				FacesContext
+						.getCurrentInstance()
+						.addMessage(
+								null,
+								new FacesMessage(
+										FacesMessage.SEVERITY_INFO,
+										"Bienvenu "
+												+ session
+														.getAttribute("userLogin"),
+										null));
+			} else {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO,
+								"Changer de mot de passe", null));
+				return "/faces/password.xhtml";
+			}
+		} else {
+			val = "faildLogin";
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO,
+							"Login ou mot de passe Incorect", null));
+			/*
+			 * test++; if(test==3){
+			 * FacesContext.getCurrentInstance().addMessage(null, new
+			 * FacesMessage(FacesMessage.SEVERITY_INFO,"test !!!", null));
+			 * //System.exit(0);
+			 * 
+			 * }
+			 */
+		}
+		return val;
+
+	}
+
+	/*
+	 * public String indice() { String val = ""; Boolean res = false; res =
+	 * (userService).findByIndice(user.getTypeActe()); if (res == true) {
+	 * 
+	 * val = "succesIndice"; HttpSession session =
+	 * UtilitaireSession.getSession(); session.setAttribute("userTypeActe",
+	 * String.valueOf(user.getTypeActe()));
+	 * 
+	 * } else { val = "faildIndice";
+	 * FacesContext.getCurrentInstance().addMessage( null, new
+	 * FacesMessage(FacesMessage.SEVERITY_INFO, "Changer de mot de passe",
+	 * null)); return "/faces/password.xhtml"; } return val;
+	 * 
+	 * }
+	 */
+	public String generedpw() {
+		Random r = new Random();
+		String monpwd = "";
+		String[] alphabet = { "a", "b", "c", "d", "R", "S", "T", "X", "y", "Z",
+				"1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+		int c = 8;
+		// opposer du nombre
+		int c2 = c / 2;
+		int nc2 = 0 - c2;// opposer de la moitie du nombre saisi
+		for (int x = nc2; x < 0; x++) {
+			int alphanum = r.nextInt(20);
+			int numnum = r.nextInt(10);
+			monpwd = monpwd + alphabet[alphanum] + "" + numnum;
+		}
+
+		return monpwd;
+	}
+
+	public void VerifierPws(FacesContext arg0, UIComponent arg1, Object arg2)
+			throws ValidatorException {
+		// TODO Auto-generated method stub
+		String pws = (String) arg2;
+		System.out.println("Password:" + pws);
+		User user = new User();
+		user = userService.findByPassword(pws);
+		if (user == null) {
+			String msg = "Le mot de passe n'existe pas";
+			throw new ValidatorException(new FacesMessage(
+					FacesMessage.SEVERITY_ERROR, msg, null));
+		}
+	}
+
+		private static final String CHAMP_MOT_DE_PASSE = "composantMotDePasse";
+		private static final String MOTS_DE_PASSE_DIFFERENTS = "Le mot de passe et la confirmation doivent être identiques.";
+
+		public void validate(FacesContext context, UIComponent component,
+				Object value) throws ValidatorException {
+			/*
+			 * Récupération de l'attribut mot de passe parmi la liste des
+			 * attributs du composant confirmation
+			 */
+			UIInput composantMotDePasse = (UIInput) component.getAttributes()
+					.get(CHAMP_MOT_DE_PASSE);
+			/*
+			 * Récupération de la valeur du champ, c'est-à-dire le mot de passe
+			 * saisi
+			 */
+			String motDePasse = (String) composantMotDePasse.getValue();
+			/* Récupération de la valeur du champ confirmation */
+			String confirmation = (String) value;
+
+			if (confirmation != null && !confirmation.equals(motDePasse)) {
+				/*
+				 * Envoi d'une exception contenant une erreur de validation JSF
+				 * initialisée avec le message destiné à l'utilisateur, si les
+				 * mots de passe sont différents
+				 */
+				throw new ValidatorException(new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, MOTS_DE_PASSE_DIFFERENTS,
+						null));
+			
+		}
+	}
+
+	public User getUs() {
+		return us;
+	}
+
+	public void setUs(User us) {
+		this.us = us;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public static String getChampMotDePasse() {
+		return CHAMP_MOT_DE_PASSE;
+	}
+
+	public static String getMotsDePasseDifferents() {
+		return MOTS_DE_PASSE_DIFFERENTS;
+	}
+
+}

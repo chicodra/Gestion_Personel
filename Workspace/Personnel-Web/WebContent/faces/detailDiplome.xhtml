@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter un Diplome a un Agent">
+				<h:panelGrid columns="4">
+					<p:outputLabel for="libelleDiplome" value="Libelle Diplome :" />
+					<p:selectOneMenu id="libelleDiplome"
+						value="#{detailDiplomeBean.dd.diplome}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px" filter="true">
+						
+						<f:selectItems value="#{detailDiplomeBean.diplomes}"
+							var="typediplome" itemValue="#{typediplome}"
+							itemLabel="#{typediplome.libellediplome}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="etabilissement" value="Etablissement :" />
+					<p:inputText id="etabilissement" value="#{detailDiplomeBean.dd.etablissement}" required="true"
+						 label="Etablissement" />
+						 
+					<p:outputLabel for="anneeAcademique" value="Annee Academique :" />
+					<p:inputText id="anneeAcademique" value="#{detailDiplomeBean.dd.anneeacademique}" maxlength="9" required="true"
+						 label="Annee Academique" />
+						
+						<p:outputLabel for="matriculeagent" value="Matricule Agent :" />
+					<p:selectOneMenu id="matriculeagent"
+						value="#{detailDiplomeBean.dd.agent}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px" filter="true">
+						<f:selectItems value="#{detailDiplomeBean.agents}"
+							var="agent" itemValue="#{agent}"
+							itemLabel="#{agent.matricule}" />
+					</p:selectOneMenu>		
+					<p:commandButton value="Enregistrer" action="#{detailDiplomeBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

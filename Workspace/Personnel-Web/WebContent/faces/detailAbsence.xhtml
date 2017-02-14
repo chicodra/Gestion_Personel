@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter une Absence a un Agent">
+				<h:panelGrid columns="4">
+					<p:outputLabel for="libelleAbsence" value="Libelle Absence :" />
+					<p:selectOneMenu id="libelleAbsence"
+						value="#{detailAbsenceBean.dabs.absence}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px" filter="true">
+						
+						<f:selectItems value="#{detailAbsenceBean.absences}"
+							var="typeAbsence" itemValue="#{typeAbsence}"
+							itemLabel="#{typeAbsence.libelleAbsence}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="nombreJour" value="Nombre de Jour :" />
+					<p:inputText id="nombreJour" value="#{detailAbsenceBean.dabs.nombreJour}" maxlength="2" required="true"
+						 label="Nombre de Jour" />
+					
+					<p:outputLabel for="dateDebutAbsence" value="Date Debut Absence :" />
+					<p:calendar id="dateDebutAbsence"
+						value="#{detailAbsenceBean.dabs.dateDebutAbsence}" required="true"
+						label="Date Debut Absence" />
+						
+						
+						<p:outputLabel for="matriculeAgent" value="Matricule Agent :" />
+					<p:selectOneMenu id="matriculeAgent"
+						value="#{detailAbsenceBean.dabs.agent}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px" filter="true">
+						<f:selectItems value="#{detailAbsenceBean.agents}"
+							var="agent" itemValue="#{agent}"
+							itemLabel="#{agent.matricule}" />
+					</p:selectOneMenu>		
+					<p:commandButton value="Enregistrer" action="#{detailAbsenceBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

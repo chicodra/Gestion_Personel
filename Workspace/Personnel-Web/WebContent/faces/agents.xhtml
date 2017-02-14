@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+
+
+		<h:form>
+			<p:messages showDetail="=true" />
+
+			<p:panel header="Ajouter un nouveau Agent">
+
+				<h:panelGrid columns="4">
+
+
+					<p:outputLabel for="nom" value="Nom :" />
+					<p:inputText id="nom" value="#{agentBean.agent.nom}" required="true"
+						maxlength="14" label="Nom" />
+
+					<p:outputLabel for="prenom" value="Prénom :" />
+					<p:inputText id="prenom" value="#{agentBean.agent.prenom}" required="true"
+						maxlength="16" label="Prénom" />
+					<p:outputLabel for="matricule" value="Matricule :" />
+					<p:inputText id="matricule" value="#{agentBean.agent.matricule}" label="Matricule"
+						required="true" maxlength="7"
+						validator="#{agentBean.validateAgent}" />
+						<p:outputLabel for="sexe" value="Sexe :" />
+					<p:selectOneMenu id="sexe"
+						value="#{agentBean.agent.sexe}" required="true" style="width:150px">
+						<f:selectItem itemLabel="" />
+						<f:selectItem itemLabel="M" itemValue="1" />
+						<f:selectItem itemLabel="F" itemValue="2" />
+					</p:selectOneMenu>
+					<p:outputLabel for="titre" value="Titre :" />
+					<p:selectOneMenu id="titre" value="#{agentBean.agent.titre}"
+						style="width:200px" required="true" label="Titre">
+						<f:selectItem itemLabel="" />
+						<f:selectItem itemLabel="Mll" itemValue="MLL" />
+						<f:selectItem itemLabel="Mme" itemValue="MME" />
+						<f:selectItem itemLabel="Mr" itemValue="MR" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="dateNaiss" value="Date Naissance :" />
+					<p:calendar id="dateNaiss" value="#{agentBean.agent.dateNaissance}"
+						required="true" label="Date Naissance" />
+					<p:outputLabel for="lieuNaiss" value="Lieu de Naissance :" />
+					<p:inputText id="lieuNaiss" value="#{agentBean.agent.lieuNaissance}"
+						required="true" maxlength="16" label="Lieu de Naissance" />
+						
+						<p:outputLabel for="adresse" value="Adresse :" />
+					<p:inputText id="adresse" value="#{agentBean.agent.adresseofficiel}"
+						required="true"  label="Adresse" />
+						   
+						<p:outputLabel for="tel" value="Telephone :" />
+					<p:inputText id="tel" value="#{agentBean.agent.telofficiel}"
+						required="true" maxlength="9" label="Telephone" validator="#{agentBean.verifiertel}" />
+						
+						<p:outputLabel for="mail" value="E-Mail :" />
+					<p:inputText id="mail" value="#{agentBean.agent.mailofficiel}"
+						required="true" maxlength="60"  label="E-Mail" validator="#{agentBean.verifiermail}"  >
+						 <f:ajax event="blur" render="emailMessage" />
+						</p:inputText>
+					<p:outputLabel for="marie" value="Situation Matrimoniale :" />
+					<p:selectOneMenu id="marie"
+						value="#{agentBean.agent.situationmatrimonial}" 
+						style="width:200px" required="true">
+						<f:selectItem itemLabel="" />
+						<f:selectItem itemLabel="Marié" itemValue="Marié" />
+						<f:selectItem itemLabel="Celibataire" itemValue="Celibataire" />
+						<f:selectItem itemLabel="Divorcé" itemValue="Divorcé" />
+						<f:selectItem itemLabel="Veuve" itemValue="Veuve" />
+						<f:selectItem itemLabel="Veuf" itemValue="Veuf" />
+					</p:selectOneMenu>
+					<p:outputLabel for="nbrenfants" value="Nombre d'enfants : " />
+					<p:inputText id="nbrenfants" value="#{agentBean.agent.nombreenfant}" maxlength="2" required="true"/>
+					
+					<p:outputLabel for="numR" value="Numero Recrutement :" />
+					<p:inputText id="numR" value="#{agentBean.agent.numrecrutement}"
+						required="true"  label="Numero Recrutement" />
+					<p:outputLabel for="dateRecrut" value="Date Recrutement :" />
+					<p:calendar id="dateRecrut"
+						value="#{agentBean.agent.dateRecrutement}" required="true" />
+						
+					<p:outputLabel for="corps" value="Corps :" />
+					<p:selectOneMenu id="corps" value="#{agentBean.agent.corps}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+						<f:selectItems value="#{agentBean.corps}" var="corps"
+							itemValue="#{corps}" itemLabel="#{corps.libelleCorps}" />
+					</p:selectOneMenu>
+					<p:outputLabel for="service" value="Service :" />
+					<p:selectOneMenu id="service" value="#{agentBean.agent.service}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+						<f:selectItems value="#{agentBean.services}" var="service"
+							itemValue="#{service}" itemLabel="#{service.libelleservice}" />
+					</p:selectOneMenu>
+				<p:outputLabel for="national" value="Nationalité :" />
+					<p:selectOneMenu id="national"
+						value="#{agentBean.agent.nationalite}" required="true" style="width:150px">
+						<f:selectItem itemLabel="Senegalaise" itemValue="1" />
+						<f:selectItem itemLabel="Autre" itemValue="2" />
+					</p:selectOneMenu>
+			<!-- <p:panel header="Informations Administratives">
+
+				<p:spacer width="50" height="20" />
+
+				<h:panelGrid columns="4" >
+                    
+					<p:outputLabel for="corps" value="Corps :" />
+					<p:selectOneMenu id="corps" value="#{agentBean.agent.corps}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+
+						<f:selectItems value="#{agentBean.corps}" var="corps"
+							itemValue="#{corps}" itemLabel="#{corps.libelleCorps}" />
+
+					</p:selectOneMenu>
+					<p:outputLabel for="fonction" value="Fonction :" />
+					<p:selectOneMenu id="fonction" value="#{agentBean.agent.detailfonction}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+
+						<f:selectItems value="#{agentBean.fonctions}" var="fonction"
+							itemValue="#{fonction}" itemLabel="#{fonction.libelleFonction}" />
+
+					</p:selectOneMenu>
+
+					<p:outputLabel for="classe" value="Classe :" />
+					<p:selectOneMenu id="classe" value="#{agentBean.agent.detailclasse}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+
+						<f:selectItems value="#{agentBean.classes}" var="classe"
+							itemValue="#{classe}" itemLabel="#{classe.libelleClasse}" />
+
+					</p:selectOneMenu>
+
+					
+				</h:panelGrid>
+			</p:panel> -->
+			 <h:message id="emailMessage" for="email" errorClass="erreur" />
+			<h:panelGroup
+				style="display:block">
+				<p:commandButton value="Enregistrer" action="#{agentBean.SaveAgent}"
+					type="submit" ajax="false" />
+			</h:panelGroup>
+			</h:panelGrid>
+
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

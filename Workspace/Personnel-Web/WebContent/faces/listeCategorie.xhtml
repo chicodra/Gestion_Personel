@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+
+			<p:dataTable var="categorie" value="#{detailCategorieBean.dcategories}"
+				emptyMessage="Liste  vide." style=" width:60% ">
+
+				
+				<p:column headerText="Categorie" sortBy="#{categorie.categorie.libellecategorie}"
+					filterBy="#{categorie.categorie.libellecategorie}" filterMatchMode="contains" width="150">
+					<h:outputText value="#{categorie.categorie.libellecategorie}" />
+				</p:column>
+				<p:column headerText="Date Debut " width="200">
+					<h:outputText value="#{categorie.dateDebutCategorie}" />
+				</p:column>
+				<p:column headerText="Date Fin" width="200">
+					<h:outputText value="#{categorie.dateFinCategorie}" />
+				</p:column>
+				<p:column headerText="Matricule" sortBy="#{categorie.agent.matricule}"
+					filterBy="#{categorie.agent.matricule}" filterMatchMode="contains" width="150">
+					<h:outputText value="#{categorie.agent.matricule}" />
+				</p:column>
+				
+				<p:column width="30">
+					<f:facet name="header">
+						<h:outputText value="del" />
+					</f:facet>
+					<p:commandLink action="#{detailCategorieBean.delete}" styleClass="ui-icon ui-icon-trash">
+						<f:setPropertyActionListener target="#{detailCategorieBean.ddctg}"
+							value="#{categorie}" />
+					</p:commandLink>
+				</p:column>
+				
+			</p:dataTable>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

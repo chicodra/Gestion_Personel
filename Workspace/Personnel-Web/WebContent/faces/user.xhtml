@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter un nouveau Utilisateur">
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Nom  *: " />
+					<p:inputText value="#{userBean.user.nom}" required="true"
+						label="Nom utilisateur" />
+					<h:outputText value="Prenom *: " />
+					<p:inputText value="#{userBean.user.prenom}" required="true"
+						label="Prenom utilisateur" />
+					<h:outputText value="Login *: " />
+					<p:inputText value="#{userBean.user.login}" required="true"
+						label="login" />
+				
+					<p:commandButton value="Enregistrer" action="#{userBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+		<h:form>
+
+			<p:dataTable var="user" value="#{userBean.users}"
+				emptyMessage="Liste  vide." style=" width:60% ">
+
+				<p:column headerText="Code User" width="70">
+					<h:outputText value="#{user.idUser}" />
+
+				</p:column>
+				<p:column headerText="Nom " width="200">
+					<h:outputText value="#{user.nom}" />
+				</p:column>
+				<p:column headerText="Prenom " width="300">
+					<h:outputText value="#{user.prenom}" />
+				</p:column>
+				
+				<p:column headerText="Login" sortBy="#{user.login}"
+					filterBy="#{user.login}" filterMatchMode="contains" width="100">
+					<h:outputText value="#{user.login}" />
+				</p:column>
+				<p:column headerText="Mot de passe" width="150">
+					<h:outputText value="#{user.password}" />
+				</p:column>
+				<p:column headerText="Indice" width="60">
+					<h:outputText value="#{user.typeActe}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Personnel-Web/WebContent/faces/arretTravail.xhtml&apos; to &apos;vacation.xhtml&apos;" description="Rename resource &apos;arretTravail.xhtml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/faces/arretTravail.xhtml" name="vacation.xhtml" stamp="1464570014992" updateReferences="true"/>
+</session>

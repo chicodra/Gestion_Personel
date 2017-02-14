@@ -1,0 +1,21 @@
+content_assist_disabled_computers=org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.lang.Cloneable"><rhs name\="java.util.Date"/></lhs><lhs name\="java.util.Date"><rhs name\="java.util.Date"/></lhs><lhs name\="dtai.gp.model.Corps"><rhs name\="dtai.gp.model.Corps"/></lhs><lhs name\="dtai.gp.dao.DAOGeneric"><rhs name\="dtai.gp.dao.impl.UserDao"/><rhs name\="dtai.gp.dao.impl.ClasseDao"/></lhs><lhs name\="dtai.gp.dao.impl.UserDao"><rhs name\="dtai.gp.dao.impl.UserDao"/></lhs><lhs name\="dtai.gp.model.DetailFonction"><rhs name\="dtai.gp.model.DetailFonction"/></lhs><lhs name\="dtai.gp.model.TypeSanction"><rhs name\="dtai.gp.model.TypeSanction"/></lhs><lhs name\="dtai.gp.dao.DAO"><rhs name\="dtai.gp.dao.impl.SanctionDao"/><rhs name\="dtai.gp.dao.impl.DetailFonctionDao"/><rhs name\="dtai.gp.dao.impl.ServiceDao"/><rhs name\="dtai.gp.dao.impl.VacationDao"/><rhs name\="dtai.gp.dao.impl.DetailAbsenceDao"/><rhs name\="dtai.gp.dao.impl.CategorieDao"/><rhs name\="dtai.gp.dao.impl.DiplomeDao"/></lhs><lhs name\="dtai.gp.dao.impl.SanctionDao"><rhs name\="dtai.gp.dao.impl.SanctionDao"/></lhs><lhs name\="dtai.gp.dao.impl.DetailFonctionDao"><rhs name\="dtai.gp.dao.impl.DetailFonctionDao"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="dtai.gp.dao.impl.ClasseDao"><rhs name\="dtai.gp.dao.impl.ClasseDao"/></lhs><lhs name\="dtai.gp.dao.impl.ServiceDao"><rhs name\="dtai.gp.dao.impl.ServiceDao"/></lhs><lhs name\="dtai.gp.model.Service"><rhs name\="dtai.gp.model.Service"/></lhs><lhs name\="dtai.gp.dao.impl.VacationDao"><rhs name\="dtai.gp.dao.impl.VacationDao"/></lhs><lhs name\="dtai.gp.model.Absence"><rhs name\="dtai.gp.model.Absence"/></lhs><lhs name\="dtai.gp.dao.impl.DetailAbsenceDao"><rhs name\="dtai.gp.dao.impl.DetailAbsenceDao"/></lhs><lhs name\="dtai.gp.model.DetailAbsence"><rhs name\="dtai.gp.model.DetailAbsence"/></lhs><lhs name\="dtai.gp.dao.impl.CategorieDao"><rhs name\="dtai.gp.dao.impl.CategorieDao"/></lhs><lhs name\="dtai.gp.model.Categorie"><rhs name\="dtai.gp.model.Categorie"/></lhs><lhs name\="dtai.gp.dao.impl.DetailCategorieDao"><rhs name\="dtai.gp.dao.impl.DetailCategorieDao"/></lhs><lhs name\="dtai.gp.model.DetailCategorie"><rhs name\="dtai.gp.model.DetailCategorie"/></lhs><lhs name\="dtai.gp.model.Diplome"><rhs name\="dtai.gp.model.Diplome"/></lhs><lhs name\="dtai.gp.dao.impl.DiplomeDao"><rhs name\="dtai.gp.dao.impl.DiplomeDao"/></lhs><lhs name\="dtai.gp.model.Formation"><rhs name\="dtai.gp.model.Formation"/></lhs><lhs name\="dtai.gp.dao.impl.DetailFormationDao"><rhs name\="dtai.gp.dao.impl.DetailFormationDao"/></lhs><lhs name\="dtai.gp.model.DetailFormation"><rhs name\="dtai.gp.model.DetailFormation"/></lhs></history>
+content_assist_number_of_computers=24
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+fontPropagated=true
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.ui.editor.tab.width=
+org.eclipse.jdt.ui.formatterprofiles.version=12
+org.eclipse.jdt.ui.javadoclocations.migrated=true
+org.eclipse.jdt.ui.text.code_templates_migrated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.templates_migrated=true
+org.eclipse.jface.textfont=1|Consolas|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Consolas;
+proposalOrderMigrated=true
+spelling_locale_initialized=true
+tabWidthPropagated=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

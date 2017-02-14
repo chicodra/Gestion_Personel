@@ -1,0 +1,72 @@
+package dtai.gp.model;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+@Entity
+@NamedQueries(
+{@NamedQuery(name="ABSENCE.FINDALL", query="select abs from Absence abs"),
+@NamedQuery(name="ABSENCE.LIBELLEABSENCE", query="select absence from Absence absence where absence.libelleAbsence=:absc"),	
+@NamedQuery(name = "ABSENCE.FINDBYCODE", query = "select ab from Absence ab where ab.idAbsence=:code")
+})
+public class Absence implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idAbsence;
+    private String libelleAbsence;	
+ 
+    @OneToMany(mappedBy = "absence")
+	private Set<DetailAbsence> detailabsence = new HashSet<DetailAbsence>();
+
+	public Absence(int idabsence, String libelleAbsence,
+			Set<DetailAbsence> detailabsence) {
+		super();
+		this.idAbsence = idabsence;
+		this.libelleAbsence = libelleAbsence;
+		this.detailabsence = detailabsence;
+	}
+
+	public Absence() {
+		super();
+
+	}
+
+	public int getIdAbsence() {
+		return idAbsence;
+	}
+
+	public void setIdAbsence(int idAbsence) {
+		this.idAbsence = idAbsence;
+	}
+
+	public String getLibelleAbsence() {
+		return libelleAbsence;
+	}
+
+	public void setLibelleAbsence(String libelleAbsence) {
+		this.libelleAbsence = libelleAbsence;
+	}
+
+	public Set<DetailAbsence> getDetailabsence() {
+		return detailabsence;
+	}
+
+	public void setDetailabsence(Set<DetailAbsence> detailabsence) {
+		this.detailabsence = detailabsence;
+	}
+
+	
+	
+}

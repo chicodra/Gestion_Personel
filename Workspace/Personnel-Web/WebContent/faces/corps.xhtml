@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter un nouveau Corps">
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Libelle Corps *: " />
+					<p:inputText value="#{corpsBean.cp.libelleCorps}" required="true"
+						label="Libelle Corps" />
+					<h:outputText value="Age de retraite *: " />
+					<p:inputText value="#{corpsBean.cp.ageRetraite}" required="true"
+						maxlength="2" label="Age de retraite" />
+
+					<p:commandButton value="Enregistrer" action="#{corpsBean.save}"
+						type="submit" ajax="false" />
+
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+		<h:form>
+
+			<p:dataTable var="corps" value="#{corpsBean.corps}"
+				emptyMessage="Liste  vide." style=" width:60% ">
+
+				<p:column headerText="Code corps" width="100">
+					<h:outputText value="#{corps.idCorps}" />
+
+				</p:column>
+				<p:column headerText="Libelle corps" width="200">
+					<h:outputText value="#{corps.libelleCorps}" />
+				</p:column>
+				<p:column headerText="Age de retraite (ans)" width="200">
+					<h:outputText value="#{corps.ageRetraite}" />
+				</p:column>
+				<p:column width="40">
+					<f:facet name="header">
+						<h:outputText value="supp" />
+					</f:facet>
+					<p:commandLink action="#{corpsBean.delete}" styleClass="ui-icon ui-icon-trash">
+						<f:setPropertyActionListener target="#{corpsBean.corp}"
+							value="#{corps}" />
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+
+
+		<h:form>
+			<p:messages showDetail="=true" />
+
+			<p:panel header="Demande Vacation">
+
+				<h:panelGrid columns="4">
+
+                <p:outputLabel for="matricule" value="Matricule :" />
+					<p:selectOneMenu id="matricule" value="#{demandeBean.dmd.agent}" required="true" filter="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+						<f:selectItems value="#{demandeBean.agents}" var="matricule"
+							itemValue="#{matricule}" itemLabel="#{matricule.matricule}" />
+					</p:selectOneMenu>
+              <p:outputLabel for="vacation" value="Libelle Vacation :" />
+					<p:selectOneMenu id="vacation" value="#{demandeBean.dmd.vacation}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+						<f:selectItems value="#{demandeBean.vacations}" var="vacation"
+							itemValue="#{vacation}" itemLabel="#{vacation.libelleVacation}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="lieuVacation" value="Lieu Vacation :" />
+					<p:inputText id="lieuVacation" value="#{demandeBean.dmd.lieuVacation}" required="true"
+						 label="Lieu Vacation" />
+
+					<p:outputLabel for="nombreHeure" value="Nombre d'Heure :" />
+					<p:inputText id="nombreHeure" value="#{demandeBean.dmd.nombreHeureVacation}" required="true"
+						maxlength="2" label="Nombre d'Heure" />
+						
+						<p:outputLabel for="libelleObjetVacation" value="Libelle Objet Vacation :" />
+					<p:inputText id="libelleObjetVacation" value="#{demandeBean.dmd.libelleObjetVacation}" required="true"
+						 label="Libelle Objet Vacation" />
+						
+						
+					<p:outputLabel for="periodeVacation" value="Periode Vacation :" />
+					<p:inputText id="periodeVacation" value="#{demandeBean.dmd.periodeVacation}" required="true"
+						 label="Periode Vacation" />
+						
+					
+
+					<p:outputLabel for="dateVacation" value="Date Vacation :" />
+					<p:calendar id="dateVacation" value="#{demandeBean.dmd.dateVacation}"
+						required="true" label="Date Vacation" />
+				 
+			
+			 
+			<h:panelGroup
+				style="display:block">
+				<p:commandButton value="Enregistrer" action="#{demandeBean.saveVacation}"
+					type="submit" ajax="false" />
+			</h:panelGroup>
+			</h:panelGrid>
+
+			</p:panel>
+		</h:form>
+		
+
+	</ui:define>
+
+</ui:composition>
+</html>

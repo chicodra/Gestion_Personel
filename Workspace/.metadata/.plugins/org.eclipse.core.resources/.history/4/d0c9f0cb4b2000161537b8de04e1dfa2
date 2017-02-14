@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Sanction">
+				<h:panelGrid columns="4">
+					<p:outputLabel for="libellesanction" value="Libelle sanction :" />
+					<p:selectOneMenu id="libellesanction"
+						value="#{sanctionBean.st.typesanction}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+						<f:selectItems value="#{sanctionBean.typesanctions}"
+							var="typesanction" itemValue="#{typesanction}"
+							itemLabel="#{typesanction.libelletype}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="dateSanction" value="Date Sanction :" />
+					<p:calendar id="dateSanction"
+						value="#{sanctionBean.dtailsanction.dateSanction}" required="true"
+						label="Date Sanction" />
+						
+						<p:outputLabel for="motifsanction" value="Motif Sanction : " />
+					<p:inputText id="motifsanction" value="#{sanctionBean.dtailsanction.motif}"
+						required="true" label="Motif Sanction" />
+						
+						<p:outputLabel for="matriculeagent" value="Matricule Agent :" />
+					<p:selectOneMenu id="matriculeagent"
+						value="#{sanctionBean.dtailsanction.agent.matricule}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px">
+						<f:selectItems value="#{sanctionBean.agents}"
+							var="agent" itemValue="#{agent}"
+							itemLabel="#{agent.matricule}" />
+					</p:selectOneMenu>
+					<p:commandButton value="Enregistrer" action="#{sanctionBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

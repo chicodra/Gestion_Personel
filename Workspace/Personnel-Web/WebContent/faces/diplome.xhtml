@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter un type de Diplome">
+				<h:panelGrid columns="2">
+					
+					<p:outputLabel for="libelleDiplome" value="Libelle Diplome : " />
+					<p:inputText id="libelleDiplome" value="#{diplomeBean.dip.libellediplome}"
+						required="true" label="Libelle Diplome" validator="#{diplomeBean.verifierLibDip}" />
+					<p:commandButton value="Enregistrer" action="#{diplomeBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+		<h:form>
+			<p:dataTable var="diplome" value="#{diplomeBean.diplomes}"
+				emptyMessage="Liste  vide." style=" width:60% ">
+				<p:column headerText="Code Diplome" width="100">
+					<h:outputText value="#{diplome.iddiplome}" />
+				</p:column>
+				<p:column headerText="Diplome" width="200">
+					<h:outputText value="#{diplome.libellediplome}" />
+				</p:column>
+				<p:column width="40">
+					<f:facet name="header">
+						<h:outputText value="del" />
+					</f:facet>
+					<h:commandLink action="#{diplomeBean.delete}"
+						styleClass="ui-icon ui-icon-trash">
+						<f:setPropertyActionListener target="#{diplomeBean.ddip}"
+							value="#{diplome}" />
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

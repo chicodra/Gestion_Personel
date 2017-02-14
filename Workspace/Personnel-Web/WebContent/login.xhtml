@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	
+	</h:head>
+<h:form>
+
+		<p:panel header="Authentification" style="margin-bottom:50px;margin-left:450px;margin-right:500px;margin-top:50px;text-align:center">
+		<h:panelGrid columns="2" columnClasses="label, value" styleClass="login">
+			
+			
+		        <h:outputLabel value="Login" />
+		        <h:inputText id="username" value="#{userBean.user.login}"></h:inputText>    
+		         
+		        <h:outputLabel value="Mot de Passe"/>
+		        <h:inputSecret id="password" value="#{userBean.user.password}"></h:inputSecret>
+		     	<p:spacer  width="50" height="50"/>
+		        <f:facet name="footer">
+		      		 <h:panelGroup style="display:block; text-align:center;margin-left:50px">
+  					 	 <p:commandButton action="#{userBean.login}" value="Connexion" ajax="false"></p:commandButton>
+  					  </h:panelGroup>
+ 				</f:facet>
+	    </h:panelGrid>    
+	 
+	
+	      
+	       <p:messages  showDetail="=true" />   
+	 </p:panel>
+
+   </h:form>
+</html>

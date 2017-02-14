@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE hibernate-configuration SYSTEM "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bdgp</property>
+		<property name="hibernate.connection.username">gp</property>
+		<property name="hibernate.connection.password">dtaigp</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<property name="hibernate.show_sql">true</property>
+
+		<mapping class="dtai.gp.model.Agent"></mapping>
+		<mapping class="dtai.gp.model.Absence"></mapping>
+		<mapping class="dtai.gp.model.DetailAbsence"></mapping>
+		<mapping class="dtai.gp.model.Corps"></mapping>
+		<mapping class="dtai.gp.model.Affectation"></mapping>
+		<mapping class="dtai.gp.model.DetailDiplome"></mapping>
+		<mapping class="dtai.gp.model.Diplome"></mapping>
+		<mapping class="dtai.gp.model.DetailFormation"></mapping>
+		<mapping class="dtai.gp.model.Formation"></mapping>
+		<mapping class="dtai.gp.model.DetailSanction"></mapping>
+		<mapping class="dtai.gp.model.TypeSanction"></mapping>
+		<mapping class="dtai.gp.model.DetailFonction"></mapping>
+		<mapping class="dtai.gp.model.Fonction"></mapping>
+		<mapping class="dtai.gp.model.DetailClasse"></mapping>
+		<mapping class="dtai.gp.model.Classe"></mapping>
+		<mapping class="dtai.gp.model.DetailCategorie"></mapping>
+		<mapping class="dtai.gp.model.Categorie"></mapping>
+		<mapping class="dtai.gp.model.Departement"></mapping>
+		<mapping class="dtai.gp.model.Service"></mapping>
+		<mapping class="dtai.gp.model.User"></mapping>
+		<mapping class="dtai.gp.model.Vacation"></mapping>
+		<mapping class="dtai.gp.model.DetailModule"></mapping>
+		<mapping class="dtai.gp.model.Module"></mapping>
+		<mapping class="dtai.gp.model.Demande"></mapping>
+	</session-factory>
+
+</hibernate-configuration>

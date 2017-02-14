@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter une nouvelle Service">
+				<h:panelGrid columns="2">
+					
+					<p:outputLabel for="libellesevice" value="Libelle Service : " />
+					<p:inputText id="libellesevice" value="#{serviceBean.svc.libelleservice}"
+						required="true" label="Libelle Service" />
+					<p:commandButton value="Enregistrer" action="#{serviceBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+		<h:form>
+			<p:dataTable var="service" value="#{serviceBean.services}"
+				emptyMessage="Liste  vide." style=" width:60% ">
+				<p:column headerText="Code Service" width="200">
+					<h:outputText value="#{service.idservice}" />
+				</p:column>
+				<p:column headerText="Nom" width="200">
+					<h:outputText value="#{service.libelleservice}" />
+				</p:column>
+				<p:column width="40">
+					<f:facet name="header">
+						<h:outputText value="del" />
+					</f:facet>
+					<h:commandLink action="#{serviceBean.delete}"
+						styleClass="ui-icon ui-icon-trash">
+						<f:setPropertyActionListener target="#{serviceBean.dserv}"
+							value="#{service}" />
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

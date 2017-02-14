@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter une nouvelle Fonction">
+				<h:panelGrid columns="2">
+					<p:outputLabel for="codefonction" value="Code Fonction : " />
+					<p:inputText id="codefonction" value="#{fonctionBean.ft.idFonction}" required="true"
+						maxlength="4" minlength="4" label="code Fonction"
+						validator="#{fonctionBean.VerifierCode}" />
+					<p:outputLabel for="libellefonction" value="Libelle Fonction : " />
+					<p:inputText id="libellefonction" value="#{fonctionBean.ft.libelleFonction}"
+						required="true" label="Libelle Fonction" />
+					<p:commandButton value="Enregistrer" action="#{fonctionBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+		<h:form>
+			<p:dataTable var="fonction" value="#{fonctionBean.fonctions}"
+				emptyMessage="Liste  vide." style=" width:60% ">
+				<p:column headerText="Code fonction" width="200">
+					<h:outputText value="#{fonction.idFonction}" />
+				</p:column>
+				<p:column headerText="Libelle fonction" width="200">
+					<h:outputText value="#{fonction.libelleFonction}" />
+				</p:column>
+				<p:column width="40">
+					<f:facet name="header">
+						<h:outputText value="del" />
+					</f:facet>
+					<h:commandLink action="#{fonctionBean.delete}"
+						styleClass="ui-icon ui-icon-trash">
+						<f:setPropertyActionListener target="#{fonctionBean.fonc}"
+							value="#{fonction}" />
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

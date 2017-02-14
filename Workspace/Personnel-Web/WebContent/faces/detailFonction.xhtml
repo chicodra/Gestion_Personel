@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter une Fonction a un Agent">
+				<h:panelGrid columns="4">
+					<p:outputLabel for="libelleFonction" value="Libelle Fonction :" />
+					<p:selectOneMenu id="libelleFonction"
+						value="#{detailFonctionBean.dft.fonction}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px" filter="true">
+						
+						<f:selectItems value="#{detailFonctionBean.fonctions}"
+							var="typefonction" itemValue="#{typefonction}"
+							itemLabel="#{typefonction.libelleFonction}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="datedebutfonction" value="Date Debut Fonction :" />
+					<p:calendar id="datedebutfonction"
+						value="#{detailFonctionBean.dft.dateDebutFonction}" required="true"
+						label="Date Debut Fonction" />
+						
+						<p:outputLabel for="datefinfonction" value="Date Fin Fonction :" />
+					<p:calendar id="datefinfonction"
+						value="#{detailFonctionBean.dft.dateFinFonction}" required="false"
+						label="Date Fin Fonction" />
+						
+						<p:outputLabel for="matriculeagent" value="Matricule Agent :" />
+					<p:selectOneMenu id="matriculeagent"
+						value="#{detailFonctionBean.dft.agent}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px" filter="true">
+						<f:selectItems value="#{detailFonctionBean.agents}"
+							var="agent" itemValue="#{agent}"
+							itemLabel="#{agent.matricule}" />
+					</p:selectOneMenu>		
+					<p:commandButton value="Enregistrer" action="#{detailFonctionBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

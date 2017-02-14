@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter une Formation a un Agent">
+				<h:panelGrid columns="4">
+					<p:outputLabel for="libelleFormation" value="Libelle Formation :" />
+					<p:selectOneMenu id="libelleFormation"
+						value="#{detailFormationBean.dfmt.formation}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px"
+						filter="true">
+
+						<f:selectItems value="#{detailFormationBean.formations}"
+							var="typeformation" itemValue="#{typeformation}"
+							itemLabel="#{typeformation.libelleformation}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="dateDebutFormation"
+						value="Date Debut Formation :" />
+					<p:calendar id="dateDebutFormation"
+						value="#{detailFormationBean.dfmt.dateDebutFormation}"
+						required="true" label="Date Debut Formation" />
+
+					<p:outputLabel for="dateFinFormation" value="Date Fin Formation :" />
+					<p:calendar id="dateFinFormation"
+						value="#{detailFormationBean.dfmt.dateFinFormation}"
+						required="true" label="Date Fin Formation" />
+
+					<p:outputLabel for="lieuFormation" value="Lieu Formation : " />
+					<p:inputText id="lieuFormation"
+						value="#{detailFormationBean.dfmt.lieuformation}" required="true"
+						label="Lieu Formation" />
+
+					<p:outputLabel for="matriculeAgent" value="Matricule Agent :" />
+					<p:selectOneMenu id="matriculeAgent"
+						value="#{detailFormationBean.dfmt.agent}" required="true"
+						converter="#{genericSecuredConverter}" style="width:200px"
+						filter="true">
+						<f:selectItems value="#{detailFormationBean.agents}" var="agent"
+							itemValue="#{agent}" itemLabel="#{agent.matricule}" />
+					</p:selectOneMenu>
+					<p:commandButton value="Enregistrer"
+						action="#{detailFormationBean.save}" type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

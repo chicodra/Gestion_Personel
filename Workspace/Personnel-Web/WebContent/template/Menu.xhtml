@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Title</title>
+</h:head>
+<h:body>
+	<h:form id="menuForm">
+		<p:panelMenu style="width:240px">
+			<p:submenu label="Administrateur">
+				<p:menuitem value="Ajouter Utilisateur" outcome="/faces/user.xhtml"
+					icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter Service" outcome="/faces/service.xhtml"
+					icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Corps" outcome="/faces/corps.xhtml"
+					icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Fonction"
+					outcome="/faces/fonction.xhtml" icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Classe"
+					outcome="/faces/classe.xhtml" icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Sanction"
+					outcome="/faces/typeSanction.xhtml" icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Vacation"
+					outcome="/faces/vacation.xhtml" icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Absence"
+					outcome="/faces/absence.xhtml" icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Categorie"
+					outcome="/faces/categorie.xhtml" icon="ui-icon-disk" />
+				<p:menuitem value="Ajouter  Diplome"
+					outcome="/faces/diplome.xhtml" icon="ui-icon-disk" />
+			<p:menuitem value="Ajouter  Formation"
+					outcome="/faces/formation.xhtml" icon="ui-icon-disk" />
+			</p:submenu>
+
+			<p:submenu label="Compte Agent">
+				<p:submenu label="Ajouter">
+					<p:menuitem value="Ajouter Agent" outcome="/faces/agents.xhtml"
+						icon="ui-icon-disk" />
+					<p:menuitem value="Fonction  Agents"
+						outcome="/faces/detailFonction.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Classe Agents"
+						outcome="/faces/detailClasse.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Sanction Agents" outcome="/faces/sanction.xhtml"
+						icon="ui-icon-disk" />
+					<p:menuitem value="Absence Agents"
+						outcome="/faces/detailAbsence.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Categorie Agents"
+						outcome="/faces/detailCategorie.xhtml" icon="ui-icon-disk" />
+                     <p:menuitem value="Diplome Agents"
+						outcome="/faces/detailDiplome.xhtml" icon="ui-icon-disk" />
+                      <p:menuitem value="Formation Agents"
+						outcome="/faces/detailFormation.xhtml" icon="ui-icon-disk" />
+				</p:submenu>
+				<p:submenu label="Listes">
+
+					<p:menuitem value="Modifier Agent"
+						outcome="/faces/listeAgents.xhtml" icon="ui-icon-pencil" />
+					<p:menuitem value="Liste  Agents"
+						outcome="/faces/listeAgents.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Liste  Absence"
+						outcome="/faces/listeAbsence.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Liste Fonction"
+						outcome="/faces/listeFonction.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Liste Classe" outcome="/faces/listeClasse.xhtml"
+						icon="ui-icon-disk" />
+					<p:menuitem value="Liste Sanction"
+						outcome="/faces/listeSanction.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Liste Categorie"
+						outcome="/faces/listeCategorie.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Liste Diplome"
+						outcome="/faces/listeDiplome.xhtml" icon="ui-icon-disk" />
+						<p:menuitem value="Liste Formation"
+						outcome="/faces/listeFormation.xhtml" icon="ui-icon-disk" />
+				</p:submenu>
+
+			</p:submenu>
+
+			<p:submenu label="Demande">
+				<p:submenu label="Vacation">
+					<p:menuitem value="Ajouter Demande"
+						outcome="/faces/demandeVacation.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Liste Demande "
+						outcome="/faces/listeDemandeVacation.xhtml" icon="ui-icon-disk" />
+				</p:submenu>
+				<p:submenu label="Absence">
+					<p:menuitem value="Ajouter Demande"
+						outcome="/faces/demandeAbsence.xhtml" icon="ui-icon-disk" />
+					<p:menuitem value="Liste Demande "
+						outcome="/faces/listeDemandeAbsence.xhtml" icon="ui-icon-disk" />
+				</p:submenu>
+				<p:submenu label="Formation">
+				</p:submenu>
+			</p:submenu>
+
+
+		</p:panelMenu>
+
+	</h:form>
+</h:body>
+</html>

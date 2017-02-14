@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modules>
+  <module moduleId="org.eclipse.jst.jee.server:Personnel-Web"/>
+  <module moduleId="org.eclipse.jst.j2ee.server:Personnel" serverId="JBoss AS 7.01454927362338"/>
+</modules>

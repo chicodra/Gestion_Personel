@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<ui:composition template="template/template.xhtml">
+<div class="rounded-panel #{styleClass}">
+
+                <div class="rounded-panel-header">
+                        <span class="rounded-panel-header-img" />
+                        <span class="rounded-panel-header-text-1"><h:outputLabel value="#{titleText1}" /></span> 
+                        <span class="rounded-panel-header-text-2"><h:outputLabel value="#{titleText2}" /></span>
+                </div>
+                
+       
+
+        </div>
+<ui:define name="content">
+	<h:panelGrid columns="2" >
+							<h:outputText value="Matricule*: " />
+							<p:inputText value="#{agentBean.agent.matricule}" required="true" />
+
+							<h:outputText value="Prénom *" />
+							<p:inputText value="#{agentBean.agent.prenom}" required="true"
+								label="Prénom" />
+
+							<h:outputText value="Nom *" />
+							<p:inputText value="#{agentBean.agent.nom}" required="true"
+								label="Nom" />
+						
+
+					
+							<h:outputText value="Sexe: " />
+							<p:inputText value="#{agentBean.agent.sexe}" />
+
+							<h:outputText value="Nationalite: " />
+							<p:inputText value="#{agentBean.agent.nationalite}" />
+
+							<h:outputText value="Date Naissance: " />
+
+							<p:outputLabel for="dateNaiss1" value="Date Naissance:" />
+							<p:calendar id="dateNaiss1"
+								value="#{agentBean.agent.dateNaissance}" />
+					
+
+					 
+							<p:outputLabel for="service2" value="Service" />
+							<p:selectOneMenu id="service2" value="#{agentBean.agent.service}"
+								style="width:125px">
+								<f:selectItem  itemValue="" />
+								<f:selectItems value="#{agentBean.services}" />
+							</p:selectOneMenu>
+							<h:outputText value="Fonction:" />
+							<p:outputLabel for="fonction2" value="Fonction" />
+							<p:selectOneMenu id="fonction2"
+								value="#{agentBean.agent.fonction}" style="width:125px">
+								<f:selectItem  itemValue="" />
+								<f:selectItems value="#{agentBean.fonctions}" />
+							</p:selectOneMenu>
+					
+
+						
+							<p:outputLabel for="marie1" value="Situation Matrimoniale" />
+							<p:selectOneMenu id="marie1"
+								value="#{agentBean.agent.situamtionMatrimoniale}"
+								style="width:125px">
+								<f:selectItem itemLabel="Marié" itemValue="1" />
+								<f:selectItem itemLabel="Celibataire" itemValue="2" />
+							</p:selectOneMenu> 
+							<h:outputText value="Nombre d'enfants: " />
+							<p:inputText value="#{agentBean.grappeAgent.nombreEnf}" />
+
+							<h:outputText value="Epouses: " />
+							<p:inputText value="#{agentBean.grappeAgent.nombrrEpouse}" />
+
+							<h:outputText value="Enfants Majeurs: " />
+							<p:inputText value="#{agentBean.grappeAgent.nombreEnfMaj}" />
+
+							<h:outputText value="Enfants plus de dix ans: " />
+							<p:inputText value="#{agentBean.grappeAgent.enfSupDix}" />
+
+							<h:outputText value="Anfants Mineurs: " />
+							<p:inputText value="#{agentBean.grappeAgent.nombreEnfMin}" />
+
+							<h:outputText value="Enfants moins dix huit: " />
+							<p:inputText value="#{agentBean.grappeAgent.nombreEnfInf18}" />
+
+							<h:outputText value="Enfants moins 25 ans: " />
+							<p:inputText value="#{agentBean.grappeAgent.nombreEnfInf25}" />
+						</h:panelGrid>
+				
+
+				
+</ui:define>
+
+</ui:composition>
+
+</html>

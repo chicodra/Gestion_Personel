@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;dtai.gp.model.DetailDateAbsence&apos; to &apos;DetailAbsence&apos;&#x0D;&#x0A;- Original project: &apos;Personnel&apos;&#x0D;&#x0A;- Original element: &apos;dtai.gp.model.DetailDateAbsence&apos;&#x0D;&#x0A;- Renamed element: &apos;dtai.gp.model.DetailAbsence&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;DetailDateAbsence&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;dtai.gp.model{DetailDateAbsence.java[DetailDateAbsence" matchStrategy="1" name="DetailAbsence" qualified="false" references="true" similarDeclarations="false" stamp="1464576382656" textual="false" version="1.0"/>
+</session>

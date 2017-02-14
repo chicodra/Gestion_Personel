@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template1.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:messages showDetail="false" />
+			<p:panel header="Ajouter une nouvelle Absence">
+				<h:panelGrid columns="2">
+					
+					<p:outputLabel for="libelleAbsence" value="Libelle Absence : " />
+					<p:inputText id="libelleAbsence" value="#{absenceBean.abs.libelleAbsence}"
+						required="true" label="Libelle Absence" validator="#{absenceBean.verifierLibbeleAbsence}" />
+						
+					<p:commandButton value="Enregistrer" action="#{absenceBean.save}"
+						type="submit" ajax="false" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+		<h:form>
+			<p:dataTable var="absence" value="#{absenceBean.absences}"
+				emptyMessage="Liste  vide." style=" width:60% ">
+				<p:column headerText="Code Absence" width="100">
+					<h:outputText value="#{absence.idAbsence}" />
+				</p:column>
+				<p:column headerText="Libelle Absence" width="200">
+					<h:outputText value="#{absence.libelleAbsence}" />
+				</p:column>
+				
+				<p:column width="40">
+					<f:facet name="header">
+						<h:outputText value="del" />
+					</f:facet>
+					<h:commandLink action="#{absenceBean.delete}"
+						styleClass="ui-icon ui-icon-trash">
+						<f:setPropertyActionListener target="#{absenceBean.dabs}"
+							value="#{absence}" />
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
